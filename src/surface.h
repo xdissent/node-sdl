@@ -8,6 +8,10 @@
 
 
 namespace sdl {
+	namespace surface {
+		void Init(v8::Handle<v8::Object> exports);
+	}
+
 	class SurfaceWrapper : public node::ObjectWrap {
 	public:
 	    static v8::Persistent<v8::FunctionTemplate> wrap_template_;
@@ -19,7 +23,7 @@ namespace sdl {
 	    static void Init(v8::Handle<v8::Object> exports);
 	    static v8::Handle<v8::Value> New(const v8::Arguments& args);
 
-	    static v8::Handle<v8::Value> LoadBMP(const v8::Arguments& args);
+	    // static v8::Handle<v8::Value> LoadBMP(const v8::Arguments& args);
 	    static v8::Handle<v8::Value> LoadBMPRW(const v8::Arguments& args);
 	    static v8::Handle<v8::Value> SaveBMP(const v8::Arguments& args);
 	    static v8::Handle<v8::Value> SaveBMPRW(const v8::Arguments& args);
@@ -58,6 +62,8 @@ namespace sdl {
 
 		SDL_Surface* surface_;
 	};
+
+	v8::Handle<v8::Value> LoadBMP(const v8::Arguments& args);
 }
 
 #endif

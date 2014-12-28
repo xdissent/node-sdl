@@ -7,6 +7,12 @@
 using namespace v8;
 using namespace node;
 
+void sdl::surface::Init(Handle<Object> exports) {
+	SurfaceWrapper::Init(exports);
+
+	NODE_SET_METHOD(exports, "loadBMP", LoadBMP);
+}
+
 Persistent<FunctionTemplate> sdl::SurfaceWrapper::wrap_template_;
 
 sdl::SurfaceWrapper::SurfaceWrapper() {
@@ -29,7 +35,7 @@ void sdl::SurfaceWrapper::Init(Handle<Object> exports) {
 	wrap_template_->InstanceTemplate()->SetInternalFieldCount(1);
 	wrap_template_->SetClassName(String::NewSymbol("SurfaceWrapper"));
 
-	NODE_SET_PROTOTYPE_METHOD(wrap_template_, "loadBMP", LoadBMP);
+	// NODE_SET_PROTOTYPE_METHOD(wrap_template_, "loadBMP", LoadBMP);
 	NODE_SET_PROTOTYPE_METHOD(wrap_template_, "loadBMPRW", LoadBMPRW);
 	NODE_SET_PROTOTYPE_METHOD(wrap_template_, "saveBMP", SaveBMP);
 	NODE_SET_PROTOTYPE_METHOD(wrap_template_, "saveBMPRW", SaveBMPRW);
@@ -115,7 +121,7 @@ Handle<Value> sdl::SurfaceWrapper::New(const Arguments& args) {
 	}
 }
 
-Handle<Value> sdl::SurfaceWrapper::LoadBMP(const Arguments& args) {
+Handle<Value> sdl::LoadBMP(const Arguments& args) {
 	HandleScope scope;
 
 	if(args.Length() < 1) {
@@ -129,13 +135,13 @@ Handle<Value> sdl::SurfaceWrapper::LoadBMP(const Arguments& args) {
 		return ThrowSDLException(__func__);
 	}
 
-	SurfaceWrapper* obj = new SurfaceWrapper();
-	obj->surface_ = surface;
-	Handle<Object> ret = Object::New();
-	obj->Wrap(ret);
+	Handle<Object> toWrap = Object::New();
+	SurfaceWrapper* wrap = new SurfaceWrapper(toWrap);
+	wrap->surface_ = surface;
 
-	return scope.Close(ret);
+	return scope.Close(wrap);
 }
+
 Handle<Value> sdl::SurfaceWrapper::LoadBMPRW(const Arguments& args) {
 	// TODO: Implement LoadBMPRW.
 	return ThrowException(Exception::TypeError(
