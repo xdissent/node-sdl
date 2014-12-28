@@ -139,7 +139,7 @@ Handle<Value> sdl::LoadBMP(const Arguments& args) {
 	SurfaceWrapper* wrap = new SurfaceWrapper(toWrap);
 	wrap->surface_ = surface;
 
-	return scope.Close(wrap);
+	return scope.Close(toWrap);
 }
 
 Handle<Value> sdl::SurfaceWrapper::LoadBMPRW(const Arguments& args) {
