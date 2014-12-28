@@ -99,6 +99,7 @@ init(Handle<Object> target)
   sdl::TTF::Initialize(target);
   sdl::joystick::Init(target);
   sdl::controller::Init(target);
+  sdl::surface::Init(target);
 
   // Initialization and Shutdown.
   NODE_SET_METHOD(target, "init", sdl::Init);
