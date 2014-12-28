@@ -89,7 +89,6 @@ init(Handle<Object> target)
   sdl::WindowWrapper::Init(target);
   sdl::RendererWrapper::Init(target);
   sdl::TextureWrapper::Init(target);
-  sdl::SurfaceWrapper::Init(target);
   sdl::ColorWrapper::Init(target);
   sdl::RectWrapper::Init(target);
   sdl::gl::Init(target);
