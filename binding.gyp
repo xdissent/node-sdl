@@ -54,9 +54,9 @@
 		], [
 			'OS=="linux" and target_arch=="arm"', {
 				'libraries': [
-					'/usr/local/lib/libSDL2-2.0.so',
-					'/usr/local/lib/libSDL2_image-2.0.so',
-					'/usr/local/lib/libSDL2_ttf-2.0.so'
+					'/usr/local/lib/libSDL2.so',
+					'/usr/local/lib/libSDL2_image.so',
+					'/usr/local/lib/libSDL2_ttf.so'
 				],
 				'include_dirs': [
 					'/usr/local/include/SDL2'
