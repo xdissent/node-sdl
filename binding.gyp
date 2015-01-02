@@ -21,12 +21,12 @@
 		'conditions': [[
 			'OS=="mac"', {
 				'libraries': [
-					'/usr/local/lib/libSDL2.dylib',
-					'/usr/local/lib/libSDL2_ttf.dylib',
-					'/usr/local/lib/libSDL2_image.dylib'
+					'/opt/boxen/homebrew/lib/libSDL2.dylib',
+					'/opt/boxen/homebrew/lib/libSDL2_ttf.dylib',
+					'/opt/boxen/homebrew/lib/libSDL2_image.dylib'
 				],
 				'include_dirs': [
-					'/usr/local/include/SDL2'
+					'/opt/boxen/homebrew/include/SDL2'
 				]
 			}
 		], [
